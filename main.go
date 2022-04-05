@@ -51,41 +51,41 @@ func main() {
 			case "start":
 				msg.Text = "Hey!\nI'm a laundry queue keeper!\nUse the folowing commands:\nhelp - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npop - Get out of the laundry queue"
 			case "help":
-				msg.ReplyToMessageID = update.Message.MessageID
+				//msg.ReplyToMessageID = update.Message.MessageID
 				msg.Text = "help - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npop - Get out of the laundry queue"
 			case "queue":
-				msg.ReplyToMessageID = update.Message.MessageID
+				//msg.ReplyToMessageID = update.Message.MessageID
 				msg.Text = queue.PrintQueue()
 			case "push":
 				if queue.Push(update.Message.Chat.UserName) {
-					msg.ReplyToMessageID = update.Message.MessageID
+					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = "You are get in line for laundry"
 				} else {
-					msg.ReplyToMessageID = update.Message.MessageID
+					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = "You are already in line for laundry"
 				}
 			case "pop":
 				pop := queue.Pop(update.Message.Chat.UserName)
 				if pop == "last" {
-					msg.ReplyToMessageID = update.Message.MessageID
+					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = "You are got out from the laundry queue"
 				} else if pop == "empty" {
-					msg.ReplyToMessageID = update.Message.MessageID
+					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = "Laundry queue is already empty"
 				} else if pop == "denied" {
-					msg.ReplyToMessageID = update.Message.MessageID
+					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = "You can't get someone out of the laundry queue"
 				} else {
 					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = fmt.Sprintf("Hey @%s!\n Are you ready for some loundry staf?\n You are next in the queue!\n So wake up and hurry! :D", pop)
 				}
 			default:
-				msg.ReplyToMessageID = update.Message.MessageID
+				//msg.ReplyToMessageID = update.Message.MessageID
 				msg.Text = "Unknown command"
 			}
 
 			if _, err := bot.Send(msg); err != nil {
-				log.Panic(err)
+				log.Panicln(err)
 			}
 		}
 	}
