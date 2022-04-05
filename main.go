@@ -49,7 +49,7 @@ func main() {
 			// Extract the command from the Message.
 			switch update.Message.Command() {
 			case "start":
-				msg.Text = "Hey!\nI'm a laundry queue keeper!\nUse the folowing commands:\nhelp - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npull - Get out of the laundry queue"
+				msg.Text = "Hey!\nI'm a laundry queue keeper!\nUse the folowing commands:\nhelp - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npop - Get out of the laundry queue"
 			case "help":
 				msg.ReplyToMessageID = update.Message.MessageID
 				msg.Text = "help - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npull - Get out of the laundry queue"
