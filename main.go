@@ -52,7 +52,7 @@ func main() {
 				msg.Text = "Hey!\nI'm a laundry queue keeper!\nUse the folowing commands:\nhelp - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npop - Get out of the laundry queue"
 			case "help":
 				msg.ReplyToMessageID = update.Message.MessageID
-				msg.Text = "help - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npull - Get out of the laundry queue"
+				msg.Text = "help - Request bot usage instructions\nqueue - Get the laundry queue\npush - Get in line for laundry\npop - Get out of the laundry queue"
 			case "queue":
 				msg.ReplyToMessageID = update.Message.MessageID
 				msg.Text = queue.PrintQueue()
