@@ -1,1 +1,1 @@
-# tg_pranje_bot
+# Telegram red za pranje rubljare za pranje rublja bot
