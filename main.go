@@ -5,14 +5,20 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"log"
 	"os"
+	"strconv"
 	"tg_pranje_bot/queue"
 )
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI(os.Getenv("TELEGRAM_APITOKEN"))
-	if err != nil {
-		log.Panic(err)
+	bot, apiErr := tgbotapi.NewBotAPI(os.Getenv("TELEGRAM_APITOKEN"))
+	if apiErr != nil {
+		log.Panic(apiErr)
 	}
+	tgGroupId, convErr := strconv.Atoi(os.Getenv("TELEGRAM_GROUP_ID"))
+	if convErr != nil {
+		log.Panic(convErr)
+	}
+
 	bot.Debug = false
 	log.Printf("Authorized on account %s", bot.Self.UserName)
 	u := tgbotapi.NewUpdate(0)
@@ -84,6 +90,7 @@ func main() {
 						msg.Text = "You can't get someone out of the laundry queue"
 					} else {
 						//msg.ReplyToMessageID = update.Message.MessageID
+						msg = tgbotapi.NewMessage(int64(tgGroupId), "")
 						msg.Text = fmt.Sprintf("Hey @%s!\n Are you ready for some loundry staf?\n You are next in the queue!\n So wake up and hurry! :D", pop)
 					}
 				default:
