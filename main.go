@@ -70,7 +70,7 @@ func main() {
 					//msg.ReplyToMessageID = update.Message.MessageID
 					msg.Text = queue.PrintQueue()
 				case "push":
-					if queue.Push(update.Message.Chat.UserName) {
+					if queue.Push(update.Message.From.UserName) {
 						//msg.ReplyToMessageID = update.Message.MessageID
 						msg.Text = "You are get in line for laundry"
 					} else {
@@ -78,7 +78,7 @@ func main() {
 						msg.Text = "You are already in line for laundry"
 					}
 				case "pop":
-					pop := queue.Pop(update.Message.Chat.UserName)
+					pop := queue.Pop(update.Message.From.UserName)
 					if pop == "last" {
 						//msg.ReplyToMessageID = update.Message.MessageID
 						msg.Text = "You are got out from the laundry queue"
@@ -91,7 +91,7 @@ func main() {
 					} else {
 						//msg.ReplyToMessageID = update.Message.MessageID
 						msg = tgbotapi.NewMessage(int64(tgGroupId), "")
-						msg.Text = fmt.Sprintf("Hey @%s!\n Are you ready for some loundry staf?\n You are next in the queue!\n So wake up and hurry! :D", pop)
+						msg.Text = fmt.Sprintf("Hey @%s!\n Are you ready for some loundry staf?\n You are next in the queue!\n So wake up and hurry! 😁", pop)
 					}
 				default:
 					//msg.ReplyToMessageID = update.Message.MessageID
